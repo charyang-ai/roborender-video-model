@@ -24,12 +24,24 @@ except ModuleNotFoundError:
     SAGE_ATTN_AVAILABLE = False
 
 
+def _sdpa(q, k, v):
+    """ROCm path. flash_attn and sageattention are CUDA kernels, so attention goes through PyTorch SDPA.
+
+    SDPA tries AOTriton flash attention, then the memory-efficient kernel. The math kernel is not a
+    fallback: a 3-view 81-frame clip is about 25k tokens, and the score matrix does not fit in 48 GB.
+    """
+    from torch.nn.attention import SDPBackend, sdpa_kernel
+
+    with sdpa_kernel([SDPBackend.FLASH_ATTENTION, SDPBackend.EFFICIENT_ATTENTION]):
+        return F.scaled_dot_product_attention(q, k, v)
+
+
 def flash_attention(q, k, v, num_heads, compatibility_mode=False):
     if compatibility_mode or not (FLASH_ATTN_3_AVAILABLE or FLASH_ATTN_2_AVAILABLE or SAGE_ATTN_AVAILABLE):
         q = rearrange(q, "b s (n d) -> b n s d", n=num_heads)
         k = rearrange(k, "b s (n d) -> b n s d", n=num_heads)
         v = rearrange(v, "b s (n d) -> b n s d", n=num_heads)
-        x = F.scaled_dot_product_attention(q, k, v)
+        x = _sdpa(q, k, v)
         return rearrange(x, "b n s d -> b s (n d)", n=num_heads)
     if FLASH_ATTN_3_AVAILABLE or FLASH_ATTN_2_AVAILABLE:
         q = rearrange(q, "b s (n d) -> b s n d", n=num_heads)
@@ -45,7 +57,7 @@ def flash_attention(q, k, v, num_heads, compatibility_mode=False):
     q = rearrange(q, "b s (n d) -> b n s d", n=num_heads)
     k = rearrange(k, "b s (n d) -> b n s d", n=num_heads)
     v = rearrange(v, "b s (n d) -> b n s d", n=num_heads)
-    x = sageattn(q, k, v)
+    x = _sdpa(q, k, v)
     return rearrange(x, "b n s d -> b s (n d)", n=num_heads)
 
 

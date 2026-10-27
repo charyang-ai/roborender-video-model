@@ -4,3 +4,4 @@ models
 ckpt
 data
 outputs
+_gen/

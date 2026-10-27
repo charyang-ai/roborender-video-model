@@ -26,9 +26,18 @@ def skip_init():
 def load_state_dict(path, dtype=None, device="cpu"):
     if str(path).endswith(".safetensors"):
         sd = {}
-        with safe_open(path, framework="pt", device=str(device)) as f:
-            for k in f.keys():
-                sd[k] = f.get_tensor(k)
+        try:
+            with safe_open(path, framework="pt", device=str(device)) as f:
+                for k in f.keys():
+                    sd[k] = f.get_tensor(k)
+        except (RuntimeError, ValueError):
+            # safetensors' CUDA loader calls cudaMalloc. On ROCm that fails; stage on CPU and move.
+            if str(device) in ("cpu", "meta"):
+                raise
+            sd = {}
+            with safe_open(path, framework="pt", device="cpu") as f:
+                for k in f.keys():
+                    sd[k] = f.get_tensor(k).to(device)
     else:
         sd = torch.load(path, map_location=device, weights_only=True)
         if len(sd) == 1:

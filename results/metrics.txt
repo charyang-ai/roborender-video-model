@@ -1,0 +1,4 @@
+comparison.mp4 bytes=200496 frame40_shape=(720, 1248, 3) mean=74.48 std=61.09 sha256=fdbbb4684c801d8cb76401bbf6b20112ef10aa3dd3f6d030b6bbbcbe12e4d6f1
+generated_hand_left.mp4 bytes=51893 frame40_shape=(240, 416, 3) mean=117.87 std=40.96 sha256=4ec2771f8461942b9dda356ab8f6f4350048febbd3dc57df039fb03955b80914
+generated_hand_right.mp4 bytes=46167 frame40_shape=(240, 416, 3) mean=121.85 std=34.58 sha256=401c90dab25ede0815d4d179111bf480ddced854d8f387f4e39c7c1284f18717
+generated_head_color.mp4 bytes=47004 frame40_shape=(240, 416, 3) mean=118.88 std=37.79 sha256=3837b3ea9e9951f2fa803f7d77ee0b5e3c16397cfdb72c4cf0a1226f90d712b9

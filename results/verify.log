@@ -1,0 +1,64 @@
+verify_torch 2.11.0+rocm7.14.0
+verify_hip 7.14.60850
+verify_devices 1
+verify_name AMD Radeon Pro W7900D
+verify_flash True SDPBackend.FLASH_ATTENTION
+verify_efficient True SDPBackend.EFFICIENT_ATTENTION
+SMOKE_BEGIN
+Views: ['hand_left', 'hand_right', 'head_color']
+Prompt: A robot arm on a wooden table reaches for a red mug and lifts it.
+TeaCache: off
+Source frames: 81, clips: 1 x 81 (overlap 1)
+Loading models...
+Loading LoRA from: ckpt/roborender_lora.safetensors
+300 tensors are fused by LoRA.
+
+=== clip 1/1 | prev-frame conditioning: no ===
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]MIOpen(HIP): Warning [ParseAndLoadDb] File is unreadable: "/opt/venv/lib/python3.12/site-packages/_rocm_sdk_libraries/share/miopen/db/gfx1100_48.HIP.fdb.txt"
+VAE encoding: 100%|██████████| 1/1 [00:08<00:00,  8.88s/it]VAE encoding: 100%|██████████| 1/1 [00:08<00:00,  8.88s/it]
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it]
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it]
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it]
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]
+Denoising:   0%|          | 0/2 [00:00<?, ?it/s]Denoising:  50%|█████     | 1/2 [00:04<00:04,  4.10s/it]Denoising: 100%|██████████| 2/2 [00:12<00:00,  6.44s/it]Denoising: 100%|██████████| 2/2 [00:12<00:00,  6.09s/it]
+VAE decoding:   0%|          | 0/5 [00:00<?, ?it/s]VAE decoding:  20%|██        | 1/5 [00:02<00:11,  2.81s/it]VAE decoding:  40%|████      | 2/5 [00:04<00:07,  2.35s/it]VAE decoding:  60%|██████    | 3/5 [00:06<00:04,  2.20s/it]VAE decoding:  80%|████████  | 4/5 [00:08<00:02,  2.13s/it]VAE decoding: 100%|██████████| 5/5 [00:10<00:00,  2.09s/it]VAE decoding: 100%|██████████| 5/5 [00:10<00:00,  2.18s/it]
+clip 1 done in 43.5s
+Saving video:   0%|          | 0/81 [00:00<?, ?it/s]Saving video:   1%|          | 1/81 [00:00<00:11,  7.14it/s]Saving video: 100%|██████████| 81/81 [00:00<00:00, 441.93it/s]
+Saving video:   0%|          | 0/81 [00:00<?, ?it/s]Saving video:  47%|████▋     | 38/81 [00:00<00:00, 379.64it/s]Saving video: 100%|██████████| 81/81 [00:00<00:00, 615.56it/s]
+Saving video:   0%|          | 0/81 [00:00<?, ?it/s]Saving video:  51%|█████     | 41/81 [00:00<00:00, 409.81it/s]Saving video: 100%|██████████| 81/81 [00:00<00:00, 630.09it/s]
+Saving video:   0%|          | 0/81 [00:00<?, ?it/s]Saving video:   1%|          | 1/81 [00:00<00:08,  8.93it/s]Saving video:  37%|███▋      | 30/81 [00:00<00:00, 163.76it/s]Saving video:  85%|████████▌ | 69/81 [00:00<00:00, 261.05it/s]Saving video: 100%|██████████| 81/81 [00:00<00:00, 227.01it/s]
+
+Saved to /workspace/results/smoke
+SMOKE_OK
+VERIFY_BEGIN
+Views: ['hand_left', 'hand_right', 'head_color']
+Prompt: A robot arm on a wooden table reaches for a red mug and lifts it.
+TeaCache: off
+Source frames: 81, clips: 1 x 81 (overlap 1)
+Loading models...
+Loading LoRA from: ckpt/roborender_lora.safetensors
+300 tensors are fused by LoRA.
+
+=== clip 1/1 | prev-frame conditioning: no ===
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]MIOpen(HIP): Warning [ParseAndLoadDb] File is unreadable: "/opt/venv/lib/python3.12/site-packages/_rocm_sdk_libraries/share/miopen/db/gfx1100_48.HIP.fdb.txt"
+VAE encoding: 100%|██████████| 1/1 [00:02<00:00,  2.93s/it]VAE encoding: 100%|██████████| 1/1 [00:02<00:00,  2.93s/it]
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it]
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.18s/it]
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]
+VAE encoding:   0%|          | 0/1 [00:00<?, ?it/s]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]VAE encoding: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]
+Denoising:   0%|          | 0/50 [00:00<?, ?it/s]Denoising:   2%|▏         | 1/50 [00:03<03:00,  3.69s/it]Denoising:   4%|▍         | 2/50 [00:10<04:38,  5.80s/it]Denoising:   6%|▌         | 3/50 [00:18<05:06,  6.53s/it]Denoising:   8%|▊         | 4/50 [00:25<05:19,  6.94s/it]Denoising:  10%|█         | 5/50 [00:33<05:23,  7.19s/it]Denoising:  12%|█▏        | 6/50 [00:41<05:23,  7.35s/it]Denoising:  14%|█▍        | 7/50 [00:48<05:20,  7.46s/it]Denoising:  16%|█▌        | 8/50 [00:56<05:15,  7.52s/it]Denoising:  18%|█▊        | 9/50 [01:04<05:10,  7.57s/it]Denoising:  20%|██        | 10/50 [01:11<05:04,  7.61s/it]Denoising:  22%|██▏       | 11/50 [01:19<04:57,  7.63s/it]Denoising:  24%|██▍       | 12/50 [01:27<04:50,  7.65s/it]Denoising:  26%|██▌       | 13/50 [01:35<04:43,  7.66s/it]Denoising:  28%|██▊       | 14/50 [01:42<04:36,  7.67s/it]Denoising:  30%|███       | 15/50 [01:50<04:28,  7.67s/it]Denoising:  32%|███▏      | 16/50 [01:58<04:20,  7.66s/it]Denoising:  34%|███▍      | 17/50 [02:05<04:12,  7.65s/it]Denoising:  36%|███▌      | 18/50 [02:13<04:04,  7.65s/it]Denoising:  38%|███▊      | 19/50 [02:20<03:56,  7.64s/it]Denoising:  40%|████      | 20/50 [02:28<03:48,  7.63s/it]Denoising:  42%|████▏     | 21/50 [02:36<03:41,  7.62s/it]Denoising:  44%|████▍     | 22/50 [02:43<03:33,  7.62s/it]Denoising:  46%|████▌     | 23/50 [02:51<03:25,  7.60s/it]Denoising:  48%|████▊     | 24/50 [02:58<03:17,  7.60s/it]Denoising:  50%|█████     | 25/50 [03:06<03:09,  7.59s/it]Denoising:  52%|█████▏    | 26/50 [03:14<03:01,  7.58s/it]Denoising:  54%|█████▍    | 27/50 [03:21<02:54,  7.58s/it]Denoising:  56%|█████▌    | 28/50 [03:29<02:46,  7.57s/it]Denoising:  58%|█████▊    | 29/50 [03:36<02:39,  7.57s/it]Denoising:  60%|██████    | 30/50 [03:44<02:31,  7.56s/it]Denoising:  62%|██████▏   | 31/50 [03:51<02:23,  7.55s/it]Denoising:  64%|██████▍   | 32/50 [03:59<02:15,  7.55s/it]Denoising:  66%|██████▌   | 33/50 [04:06<02:08,  7.54s/it]Denoising:  68%|██████▊   | 34/50 [04:14<02:00,  7.54s/it]Denoising:  70%|███████   | 35/50 [04:21<01:53,  7.56s/it]Denoising:  72%|███████▏  | 36/50 [04:29<01:45,  7.55s/it]Denoising:  74%|███████▍  | 37/50 [04:37<01:38,  7.55s/it]Denoising:  76%|███████▌  | 38/50 [04:44<01:30,  7.56s/it]Denoising:  78%|███████▊  | 39/50 [04:52<01:23,  7.56s/it]Denoising:  80%|████████  | 40/50 [04:59<01:15,  7.55s/it]Denoising:  82%|████████▏ | 41/50 [05:07<01:07,  7.54s/it]Denoising:  84%|████████▍ | 42/50 [05:14<01:00,  7.54s/it]Denoising:  86%|████████▌ | 43/50 [05:22<00:52,  7.55s/it]Denoising:  88%|████████▊ | 44/50 [05:29<00:45,  7.56s/it]Denoising:  90%|█████████ | 45/50 [05:37<00:37,  7.57s/it]Denoising:  92%|█████████▏| 46/50 [05:45<00:30,  7.56s/it]Denoising:  94%|█████████▍| 47/50 [05:52<00:22,  7.55s/it]Denoising:  96%|█████████▌| 48/50 [06:00<00:15,  7.55s/it]Denoising:  98%|█████████▊| 49/50 [06:07<00:07,  7.56s/it]Denoising: 100%|██████████| 50/50 [06:15<00:00,  7.56s/it]Denoising: 100%|██████████| 50/50 [06:15<00:00,  7.51s/it]
+VAE decoding:   0%|          | 0/5 [00:00<?, ?it/s]VAE decoding:  20%|██        | 1/5 [00:02<00:08,  2.04s/it]VAE decoding:  40%|████      | 2/5 [00:04<00:06,  2.03s/it]VAE decoding:  60%|██████    | 3/5 [00:06<00:04,  2.03s/it]VAE decoding:  80%|████████  | 4/5 [00:08<00:02,  2.03s/it]VAE decoding: 100%|██████████| 5/5 [00:10<00:00,  2.05s/it]VAE decoding: 100%|██████████| 5/5 [00:10<00:00,  2.05s/it]
+clip 1 done in 399.7s
+Saving video:   0%|          | 0/81 [00:00<?, ?it/s]Saving video:   1%|          | 1/81 [00:00<00:10,  7.55it/s]Saving video: 100%|██████████| 81/81 [00:00<00:00, 455.02it/s]
+Saving video:   0%|          | 0/81 [00:00<?, ?it/s]Saving video:  19%|█▊        | 15/81 [00:00<00:00, 149.75it/s]Saving video: 100%|██████████| 81/81 [00:00<00:00, 594.76it/s]
+Saving video:   0%|          | 0/81 [00:00<?, ?it/s]Saving video:  16%|█▌        | 13/81 [00:00<00:00, 129.51it/s]Saving video: 100%|██████████| 81/81 [00:00<00:00, 587.36it/s]
+Saving video:   0%|          | 0/81 [00:00<?, ?it/s]Saving video:   1%|          | 1/81 [00:00<00:08,  9.29it/s]Saving video:  36%|███▌      | 29/81 [00:00<00:00, 163.29it/s]Saving video:  73%|███████▎  | 59/81 [00:00<00:00, 223.63it/s]Saving video: 100%|██████████| 81/81 [00:00<00:00, 212.60it/s]
+
+Saved to /workspace/results/demo
+OUT comparison.mp4 bytes=200496 frames=81 meta={'plugin': 'ffmpeg', 'nframes': inf, 'ffmpeg_version': '7.0.2-static https://johnvansickle.com/ffmpeg/ built with gcc 8 (Debian 8.3.0-6)', 'codec': 'h264', 'pix_fmt': 'yuv420p(progressive)', 'fps': 15.0, 'source_size': (1248, 720), 'size': (1248, 720), 'rotate': 0, 'duration': 5.4} sha256=fdbbb4684c801d8cb76401bbf6b20112ef10aa3dd3f6d030b6bbbcbe12e4d6f1
+OUT generated_hand_left.mp4 bytes=51893 frames=81 meta={'plugin': 'ffmpeg', 'nframes': inf, 'ffmpeg_version': '7.0.2-static https://johnvansickle.com/ffmpeg/ built with gcc 8 (Debian 8.3.0-6)', 'codec': 'h264', 'pix_fmt': 'yuv420p(progressive)', 'fps': 15.0, 'source_size': (416, 240), 'size': (416, 240), 'rotate': 0, 'duration': 5.4} sha256=4ec2771f8461942b9dda356ab8f6f4350048febbd3dc57df039fb03955b80914
+OUT generated_hand_right.mp4 bytes=46167 frames=81 meta={'plugin': 'ffmpeg', 'nframes': inf, 'ffmpeg_version': '7.0.2-static https://johnvansickle.com/ffmpeg/ built with gcc 8 (Debian 8.3.0-6)', 'codec': 'h264', 'pix_fmt': 'yuv420p(progressive)', 'fps': 15.0, 'source_size': (416, 240), 'size': (416, 240), 'rotate': 0, 'duration': 5.4} sha256=401c90dab25ede0815d4d179111bf480ddced854d8f387f4e39c7c1284f18717
+OUT generated_head_color.mp4 bytes=47004 frames=81 meta={'plugin': 'ffmpeg', 'nframes': inf, 'ffmpeg_version': '7.0.2-static https://johnvansickle.com/ffmpeg/ built with gcc 8 (Debian 8.3.0-6)', 'codec': 'h264', 'pix_fmt': 'yuv420p(progressive)', 'fps': 15.0, 'source_size': (416, 240), 'size': (416, 240), 'rotate': 0, 'duration': 5.4} sha256=3837b3ea9e9951f2fa803f7d77ee0b5e3c16397cfdb72c4cf0a1226f90d712b9
+VERIFY_OK
